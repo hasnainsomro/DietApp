@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="20dp"
+        android:background="?attr/cardbackground"
+        android:orientation="vertical">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/abc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:background="?attr/cardbackground"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/id_selectdiet"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_marginRight="20dp"
+                        android:src="@drawable/ninfactirfastforwardbutton" />
+
+                    <include
+
+
+                        layout="@layout/nin_factor">
+
+
+                    </include>
+                </LinearLayout>
+
+
+                <TextView
+                    android:id="@+id/text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/padd_10"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginRight="@dimen/padd_10"
+                    android:gravity="center_horizontal"
+                    android:text="@string/specialweight"
+                    android:textAlignment="gravity"
+                    android:textAllCaps="true"
+                    android:textColorHint="@color/tintcolor"
+                    android:textSize="26sp"
+                    android:textStyle="bold">
+
+
+                </TextView>
+
+                <TextView
+                    android:id="@+id/text1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center_horizontal"
+                    android:text="@string/loginCredentials"
+                    android:textAlignment="gravity"
+                    android:textColorHint="@color/tintcolor"
+                    android:textSize="16sp"
+                    android:textStyle="bold">
+
+
+                </TextView>
+
+                <EditText
+                    android:id="@+id/email"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="40dp"
+                    android:background="@color/colororange"
+                    android:gravity="center"
+                    android:hint="Email Adrress"
+                    android:maxLength="20"
+                    android:paddingTop="12dp"
+                    android:paddingBottom="12dp"
+                    android:textColor="@color/backgroundColor"
+                    android:textColorHint="@color/dtextcolor"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/password"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:background="@color/colororange"
+                    android:gravity="center"
+                    android:hint="Password"
+                    android:maxLength="100"
+                    android:paddingTop="12dp"
+                    android:paddingBottom="12dp"
+                    android:textColor="@color/backgroundColor"
+                    android:textColorHint="@color/dtextcolor"
+                    android:textStyle="bold" />
+
+
+                <Button
+                    android:id="@+id/login"
+                    android:layout_width="wrap_content"
+
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/colororange"
+                    android:paddingLeft="60dp"
+                    android:paddingRight="60dp"
+                    android:text="Login"
+
+                    android:textColor="@color/backgroundColor"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:id="@+id/text3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center_horizontal"
+                    android:text="@string/becomemember"
+                    android:textAlignment="gravity"
+                    android:textAllCaps="false"
+                    android:textColorHint="@color/tintcolor"
+                    android:textSize="24sp"
+                    android:textStyle="bold">
+
+
+                </TextView>
+
+
+                <Button
+                    android:id="@+id/learnmore"
+                    android:layout_width="wrap_content"
+
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="@dimen/padd_10"
+                    android:background="@color/colororange"
+                    android:paddingLeft="60dp"
+                    android:paddingRight="60dp"
+                    android:text="Learn More"
+                    android:textColor="@color/backgroundColor"
+                    android:textSize="18dp" />
+
+            </LinearLayout>
+        </ScrollView>
+
+
+    </androidx.cardview.widget.CardView>
+</LinearLayout>
+

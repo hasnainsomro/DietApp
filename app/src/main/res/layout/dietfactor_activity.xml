@@ -1,0 +1,514 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:barchart="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?attr/backgroundColor"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingTop="30dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="30dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <TextView
+                android:id="@+id/id_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="20dp"
+                android:padding="2dp"
+                android:text="12 Sep 2019, 14:13"
+                android:textColor="@color/colororange"
+                android:textSize="22dp"
+
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+
+                app:layout_constraintTop_toTopOf="parent" />
+        </LinearLayout>
+
+
+        <androidx.cardview.widget.CardView
+
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:elevation="2dp"
+            card_view:cardPreventCornerOverlap="false">
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/cardbackground"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="?attr/cardbackground"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_marginRight="20dp"
+                        android:src="@drawable/ninfactirfastforwardbutton" />
+
+
+                    <include
+
+
+                        layout="@layout/nin_factor">
+
+
+                    </include>
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/image_ff"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/diet_fast_forward"
+                    android:visibility="visible" />
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp">
+
+                    <me.ithebk.barchart.BarChart
+                        android:id="@+id/bar_chart_vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="275dp"
+                        android:visibility="gone"
+                        barchart:bar_color="@color/colororange"
+                        barchart:bar_max_value="100"
+                        barchart:bar_show_animation="true"
+                        barchart:bar_show_auto_color="false"
+                        barchart:bar_spaces="17dp"
+                        barchart:bar_type="vertical"
+                        barchart:bar_width="30dp" />
+
+                </HorizontalScrollView>
+
+
+            </LinearLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="5dp"
+            android:background="?attr/cardbackground"
+            android:elevation="2dp"
+            card_view:cardPreventCornerOverlap="false">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/cardbackground"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+
+                    android:layout_margin="@dimen/padd_10"
+                    android:layout_weight="0.4"
+
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:textAlignment="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/keto"
+                        android:textSize="30sp" />
+
+                    <LinearLayout
+                        android:gravity="center_horizontal"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/button_border_round"
+                        >
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+
+
+                            android:layout_height="wrap_content"
+
+                            android:orientation="horizontal"
+                            android:padding="@dimen/padd_10">
+
+                            <EditText
+
+                                android:id="@+id/id_dietno_text1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom"
+
+                                android:digits="01234567"
+                                android:hint="4"
+                                android:inputType="number"
+                                android:maxLength="1"
+
+                                android:textSize="40sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+
+
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom"
+                                android:text=" . "
+                                android:textSize="30dp">
+
+
+                            </TextView>
+
+                            <EditText
+                                android:id="@+id/id_dietno_text2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom"
+
+                                android:digits="0123456789"
+                                android:hint="4"
+                                android:inputType="number"
+                                android:maxLength="1"
+
+                                android:textSize="40sp" />
+
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/padd_10"
+
+                    android:layout_weight="0.6"
+                    android:gravity="center_horizontal"
+
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:textAlignment="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/fat_burn"
+                        android:textSize="30sp" />
+
+                    <TextView
+
+                        android:id="@+id/id_fatburn_text"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+
+                        android:layout_marginTop="5sp"
+
+                        android:background="@drawable/button_border"
+                        android:gravity="center"
+
+                        android:padding="20dp"
+
+                        android:text="Change ketosis no"
+
+                        android:textSize="20sp"
+
+                        />
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+
+        <Button
+            android:id="@+id/id_selectdiet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="30dp"
+            android:background="@color/colororange"
+            android:paddingLeft="40dp"
+            android:paddingRight="40dp"
+            android:text="@string/next"
+            android:textAllCaps="false"
+            android:textColor="@color/cmtp_white"
+            android:textSize="20sp" />
+
+
+    </LinearLayout>
+
+
+</ScrollView>
+
+
+    <!--<?xml version="1.0" encoding="utf-8"?>-->
+    <!--<ScrollView-->
+    <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:card_view="http://schemas.android.com/tools"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent">-->
+    <!--<androidx.appcompat.widget.LinearLayoutCompat-->
+
+    <!--android:orientation="vertical"-->
+    <!--android:padding="20dp"-->
+    <!--android:background="?attr/backgroundColor"-->
+    <!--app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--app:layout_constraintStart_toStartOf="parent"-->
+    <!--app:layout_constraintTop_toTopOf="parent"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent">-->
+
+    <!--<LinearLayout-->
+    <!--android:layout_gravity="end-->
+    <!--"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content">-->
+
+
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:padding="10dp"-->
+    <!--android:textStyle="bold"-->
+    <!--android:layout_weight="2"-->
+    <!--android:text="@string/today"-->
+    <!--android:textSize="30sp"/>-->
+    <!--<TextView-->
+    <!--android:id="@+id/id_time"-->
+
+    <!--android:layout_weight="1"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:padding="10dp"-->
+    <!--android:textStyle="bold"-->
+    <!--android:textColor="@color/colororange"-->
+    <!--android:text="@string/today"-->
+    <!--android:textSize="18sp"/>-->
+    <!--</LinearLayout>-->
+
+
+    <!--<androidx.cardview.widget.CardView-->
+
+
+    <!--android:layout_marginLeft="5dp"-->
+    <!--android:layout_marginRight="5dp"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:elevation="2dp"-->
+    <!--card_view:cardPreventCornerOverlap="false">-->
+
+    <!--<LinearLayout-->
+    <!--android:background="?attr/cardbackground"-->
+    <!--android:orientation="vertical"-->
+    <!--android:layout_width="wrap_content" android:layout_height="wrap_content">-->
+
+
+    <!--<LinearLayout-->
+    <!--android:background="?attr/cardbackground"-->
+    <!--android:layout_marginTop="10dp"-->
+    <!--android:gravity="center"-->
+    <!--android:orientation="horizontal"-->
+    <!--android:layout_width="match_parent" android:layout_height="wrap_content">-->
+
+    <!--<ImageView-->
+    <!--android:id="@+id/id_selectdiet"-->
+    <!--android:layout_marginRight="20dp"-->
+    <!--android:src="@drawable/ninfactirfastforwardbutton"-->
+    <!--android:layout_width="80dp" android:layout_height="80dp"/>-->
+
+    <!--<ImageView-->
+    <!--android:id="@+id/id_image"-->
+    <!--android:layout_marginRight="20dp"-->
+    <!--android:src="@drawable/ninfactorimage"-->
+    <!--android:layout_width="wrap_content" android:layout_height="wrap_content"/>-->
+
+
+    <!--</LinearLayout>-->
+
+    <!--<ImageView-->
+    <!--android:src="@drawable/diet_fast_forward"-->
+
+    <!--android:layout_width="wrap_content" android:layout_height="wrap_content"/>-->
+
+
+    <!--</LinearLayout>-->
+
+
+    <!--</androidx.cardview.widget.CardView>-->
+
+    <!--<androidx.cardview.widget.CardView-->
+    <!--android:layout_marginTop="20dp"-->
+    <!--android:layout_marginLeft="5dp"-->
+    <!--android:layout_marginRight="5dp"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:elevation="2dp"-->
+    <!--card_view:cardPreventCornerOverlap="false">-->
+
+    <!--<LinearLayout-->
+    <!--android:background="?attr/cardbackground"-->
+    <!--android:gravity="center"-->
+    <!--android:orientation="horizontal"-->
+    <!--android:layout_width="match_parent" android:layout_height="wrap_content">-->
+
+    <!--<LinearLayout-->
+    <!--android:layout_marginLeft="@dimen/padd_10"-->
+    <!--android:gravity="center"-->
+    <!--android:layout_marginRight="40dp"-->
+    <!--android:orientation="vertical"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="match_parent">-->
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:textSize="30sp"-->
+    <!--android:text="@string/keto"/>-->
+    <!--<RelativeLayout-->
+
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content">-->
+
+    <!--<EditText-->
+    <!--android:background="@android:color/transparent"-->
+    <!--android:textSize="64dp"-->
+    <!--android:layout_alignBottom="@id/circular"-->
+    <!--android:layout_alignTop="@id/circular"-->
+    <!--android:layout_alignStart="@id/circular"-->
+    <!--android:hint="7"-->
+    <!--android:gravity="center"-->
+    <!--android:id="@+id/id_dietno"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:inputType="number"-->
+    <!--android:maxEms="1"-->
+
+
+    <!--android:layout_alignEnd="@+id/circular"/>-->
+
+    <!--<ImageView-->
+    <!--android:id="@+id/circular"-->
+    <!--android:layout_width="wrap_content" android:layout_height="wrap_content"-->
+    <!--android:src="@drawable/circualaroutline"-->
+    <!--/>-->
+    <!--</RelativeLayout>-->
+    <!--</LinearLayout>-->
+
+
+    <!--<LinearLayout-->
+    <!--android:layout_marginRight="@dimen/padd_10"-->
+    <!--android:gravity="center_horizontal"-->
+    <!--android:layout_marginLeft="40dp"-->
+    <!--android:orientation="vertical"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="match_parent">-->
+
+
+    <!--<TextView-->
+
+    <!--android:textSize="30sp"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="@string/fat_burn"/>-->
+
+    <!--<RelativeLayout android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content">-->
+    <!--<ImageView-->
+    <!--android:id="@+id/out_circle"-->
+    <!--android:layout_marginTop="@dimen/padd_10"-->
+    <!--android:layout_width="wrap_content" android:layout_height="wrap_content"-->
+    <!--android:background="@drawable/rectangle_double"/>-->
+
+    <!--<ImageView-->
+
+    <!--android:id="@+id/inner_rectangle"-->
+    <!--android:layout_marginBottom="10dp"-->
+    <!--android:layout_marginRight="@dimen/padd_10"-->
+    <!--android:layout_marginTop="@dimen/padd_10"-->
+    <!--android:layout_marginLeft="@dimen/padd_10"-->
+    <!--android:layout_alignStart="@+id/out_circle"-->
+    <!--android:layout_alignTop="@+id/out_circle"-->
+    <!--android:layout_alignBottom="@+id/out_circle"-->
+    <!--android:layout_alignRight="@+id/out_circle"-->
+    <!--android:layout_width="wrap_content" android:layout_height="wrap_content"-->
+    <!--android:background="@drawable/rectangle_double"/>-->
+    <!--<TextView-->
+    <!--android:textAlignment="center"-->
+    <!--android:gravity="center"-->
+    <!--android:text="Max value"-->
+    <!--android:textSize="20dp"-->
+    <!--android:id="@+id/text"-->
+    <!--android:layout_alignStart="@+id/inner_rectangle"-->
+    <!--android:layout_alignTop="@+id/inner_rectangle"-->
+    <!--android:layout_alignBottom="@+id/inner_rectangle"-->
+    <!--android:layout_alignRight="@+id/inner_rectangle"-->
+    <!--android:layout_width="match_parent" android:layout_height="wrap_content"-->
+    <!--android:layout_alignEnd="@+id/inner_rectangle"-->
+    <!--/>-->
+    <!--</RelativeLayout>-->
+    <!--&lt;!&ndash;<EditText&ndash;&gt;-->
+    <!--&lt;!&ndash;android:id="@+id/id_fatburn"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:layout_height="match_parent"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:background="@drawable/rectangle_double"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:inputType="number"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:maxLines="1"/>&ndash;&gt;-->
+    <!--</LinearLayout>-->
+
+
+    <!--</LinearLayout>-->
+
+
+    <!--</androidx.cardview.widget.CardView>-->
+
+
+    <!--</androidx.appcompat.widget.LinearLayoutCompat>-->
+    <!--</ScrollView>-->
+
