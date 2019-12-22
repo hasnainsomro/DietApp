@@ -4,6 +4,7 @@ import android.app.AlarmManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
@@ -34,7 +35,7 @@ class HomeScreenActivity : AppCompatActivity() {
 
     var notificationList = ArrayList<Notification>()
     var manager: AlarmManager? = null
-    private val sdf = SimpleDateFormat("dd-M-yyyy, hh:mm")
+    private val sdf = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.getDefault())
     var sharedPreferenceHelper: SharedPreferenceHelper? = null
 
     private lateinit var wordViewModel: WordViewModel
@@ -195,23 +196,16 @@ class HomeScreenActivity : AppCompatActivity() {
     }
 
     var mRunnableclock: Runnable = object : Runnable {
-
         override fun run() {
             if (mActive) {
-
-
                 time.text = getTime()
-
                 mHandler!!.postDelayed(this, 1000)
             }
         }
 
-
         private fun getTime(): String {
             return sdf.format(Date(System.currentTimeMillis()))
         }
-
-
     }
 
     private val mOnNavigationItemSelectedListener =
@@ -259,7 +253,6 @@ class HomeScreenActivity : AppCompatActivity() {
 
     private fun startActivitySupport() {
         return
-
     }
 
     private fun startActivityChew() {
@@ -279,20 +272,20 @@ class HomeScreenActivity : AppCompatActivity() {
 
 
     private fun control() {
-        var notificationModela = Notification(
+        val notificationModela = Notification(
             0, 17,
-            "23:1",
-            false,
-            true,
-            true,
-            Constants.Control,
-            true,
-            true,
-            true,
-            true,
-            true,
-            true,
-            true
+            "23:10",
+            status = false,
+            vibration = true,
+            sound = true,
+            alarmType = Constants.Control,
+            monday = true,
+            tuesday = true,
+            wednesday = true,
+            thursday = true,
+            friday = true,
+            saturday = true,
+            sunday = true
         )
 
 
@@ -300,83 +293,73 @@ class HomeScreenActivity : AppCompatActivity() {
         notificationList.add(notificationModela)
         // setAlarm(notificationModela)
 
-        var notificationModelb =
+        val notificationModelb =
             Notification(
                 0,
                 18,
-                "23:2",
-                false,
-                true,
-                true,
-                Constants.Control,
-                true,
-                true,
-                true,
-                true,
-                true,
-                true,
-                true
+                "23:20",
+                status = false,
+                vibration = true,
+                sound = true,
+                alarmType = Constants.Control,
+                monday = true,
+                tuesday = true,
+                wednesday = true,
+                thursday = true,
+                friday = true,
+                saturday = true,
+                sunday = true
             )
-
-
         notificationList.add(notificationModelb)
 
 
-        for (i in 0..notificationList.size - 1) {
+        for (i in 0 until notificationList.size) {
             wordViewModel.insert(notificationList[i])
             setAlarm(notificationList[i])
             Log.e("HomeScreenActivity", "setAlarm: " + notificationList[i])
         }
-
-
     }
 
-    //
     private fun tech() {
-        var notificationModela =
+        val notificationModela =
             Notification(
                 0,
-
                 16,
-                "7:0",
-
-                false,
-                true,
-                true,
-                Constants.Tech,
-                true,
-                true,
-                true,
-                true,
-                true,
-                true,
-                true
+                "07:00",
+                status = false,
+                vibration = true,
+                sound = true,
+                alarmType = Constants.Tech,
+                monday = true,
+                tuesday = true,
+                wednesday = true,
+                thursday = true,
+                friday = true,
+                saturday = true,
+                sunday = true
             )
-
 
         notificationList.add(notificationModela)
     }
 
 
     private fun blief() {
-        var notificationModela =
+        val notificationModela =
             Notification(
                 0,
-
                 15,
-                "22:0",
-
-                false,
-                true,
-                true,
-                Constants.Blief,
-                true,
-                true,
-                true,
-                true,
-                true,
-                true,
-                true
+                "22:00",
+                status = false,
+                vibration = true,
+                sound = true,
+                alarmType = Constants.Blief,
+                monday = true,
+                tuesday = true,
+                wednesday = true,
+                thursday = true,
+                friday = true,
+                saturday = true,
+                sunday = true
             )
 
         // wordViewModel.insert(notificationModela)
@@ -385,24 +368,22 @@ class HomeScreenActivity : AppCompatActivity() {
     }
 
     private fun gooutinSun() {
-        var notificationModela =
+        val notificationModela =
             Notification(
                 0,
-
                 14,
                 "12:45",
-
-                false,
-                true,
-                true,
-                Constants.GoOutSun,
-                true,
-                true,
-                true,
-                true,
-                true,
-                true,
-                true
+                status = false,
+                vibration = true,
+                sound = true,
+                alarmType = Constants.GoOutSun,
+                monday = true,
+                tuesday = true,
+                wednesday = true,
+                thursday = true,
+                friday = true,
+                saturday = true,
+                sunday = true
             )
 
         // wordViewModel.insert(notificationModela)
@@ -412,71 +393,65 @@ class HomeScreenActivity : AppCompatActivity() {
     }
 
     private fun eatHealthyFood() {
-        var notificationModela =
+        val notificationModela =
             Notification(
                 0,
-
                 11,
                 "10:45",
-
-                false,
-                true,
-                true,
-                Constants.EatHealthy,
-                true,
-                true,
-                true,
-                true,
-                true,
-                true,
-                true
+                status = false,
+                vibration = true,
+                sound = true,
+                alarmType = Constants.EatHealthy,
+                monday = true,
+                tuesday = true,
+                wednesday = true,
+                thursday = true,
+                friday = true,
+                saturday = true,
+                sunday = true
             )
 
         // wordViewModel.insert(notificationModela)
         //  setAlarm(notificationModela)
         notificationList.add(notificationModela)
-        var notificationModelb =
+        val notificationModelb =
             Notification(
                 0,
-
                 12,
                 "16:45",
-
-                false,
-                true,
-                true,
-                Constants.EatHealthy,
-                true,
-                true,
-                true,
-                true,
-                true,
-                true,
-                true
+                status = false,
+                vibration = true,
+                sound = true,
+                alarmType = Constants.EatHealthy,
+                monday = true,
+                tuesday = true,
+                wednesday = true,
+                thursday = true,
+                friday = true,
+                saturday = true,
+                sunday = true
             )
 
         // wordViewModel.insert(notificationModelb)
 //        setAlarm(notificationModelb)
         notificationList.add(notificationModelb)
 
-        var notificationModelc =
+        val notificationModelc =
             Notification(
                 0,
-
                 13,
                 "20:45",
-
-                false,
-                true,
-                true,
-                Constants.EatHealthy,
-                true,
-                true,
-                true,
-                true,
-                true,
-                true,
-                true
+                status = false,
+                vibration = true,
+                sound = true,
+                alarmType = Constants.EatHealthy,
+                monday = true,
+                tuesday = true,
+                wednesday = true,
+                thursday = true,
+                friday = true,
+                saturday = true,
+                sunday = true
             )
 
         // wordViewModel.insert(notificationModelc)
@@ -486,292 +461,245 @@ class HomeScreenActivity : AppCompatActivity() {
     }
 
     private fun physicalActivity() {
-
-        var notificationModela =
+        val notificationModela =
             Notification(
                 0,
-
                 10,
                 "18:30",
-
-                false,
-                false,
-                false,
-                Constants.Excercise,
-                false,
-                true,
-                false,
-                true,
-                false,
-                false,
-                true
+                status = false,
+                vibration = false,
+                sound = false,
+                alarmType = Constants.Excercise,
+                monday = false,
+                tuesday = true,
+                wednesday = false,
+                thursday = true,
+                friday = false,
+                saturday = false,
+                sunday = true
             )
 
         // wordViewModel.insert(notificationModela)
         //     setAlarm(notificationModela)
         notificationList.add(notificationModela)
-
-
     }
 
     private fun drinkWater() {
-
-        var notificationModel =
+        val notificationModel =
             Notification(
                 0,
-
                 2,
-                "7:0",
-                false,
-                false,
-                false,
-                Constants.Water,
-                true,
-                true,
-                true,
-                true,
-                true,
-                true,
-                true
+                "07:00",
+                status = false,
+                vibration = false,
+                sound = false,
+                alarmType = Constants.Water,
+                monday = true,
+                tuesday = true,
+                wednesday = true,
+                thursday = true,
+                friday = true,
+                saturday = true,
+                sunday = true
             )
 
         // wordViewModel.insert(notificationModel)
         // setAlarm(notificationModel)
         notificationList.add(notificationModel)
 
-
-        var notificationModelc =
+        val notificationModelc =
             Notification(
                 0,
-
                 3,
-                "9:5",
-
-                false,
-                false,
-                false,
-                Constants.Water,
-                true,
-                true,
-                true,
-                true,
-                true,
-                true,
-                true
+                "09:50",
+                status = false,
+                vibration = false,
+                sound = false,
+                alarmType = Constants.Water,
+                monday = true,
+                tuesday = true,
+                wednesday = true,
+                thursday = true,
+                friday = true,
+                saturday = true,
+                sunday = true
             )
 
         // wordViewModel.insert(notificationModelc)
         //setAlarm(notificationModelc)
         notificationList.add(notificationModelc)
 
-
-        var notificationModeld =
+        val notificationModeld =
             Notification(
                 0,
-
                 4,
-                "11:0",
-
-                false,
-                false,
-                false,
-                Constants.Water,
-                true,
-                true,
-                true,
-                true,
-                true,
-                true,
-                true
+                "11:00",
+                status = false,
+                vibration = false,
+                sound = false,
+                alarmType = Constants.Water,
+                monday = true,
+                tuesday = true,
+                wednesday = true,
+                thursday = true,
+                friday = true,
+                saturday = true,
+                sunday = true
             )
 
         // wordViewModel.insert(notificationModeld)
         //   setAlarm(notificationModeld)
         notificationList.add(notificationModeld)
 
-
-        var notificationModelh =
+        val notificationModelh =
             Notification(
                 0,
-
                 5,
-                "12:5",
-
-                false,
-                false,
-                false,
-                Constants.Water,
-                true,
-                true,
-                true,
-                true,
-                true,
-                true,
-                true
+                "12:50",
+                status = false,
+                vibration = false,
+                sound = false,
+                alarmType = Constants.Water,
+                monday = true,
+                tuesday = true,
+                wednesday = true,
+                thursday = true,
+                friday = true,
+                saturday = true,
+                sunday = true
             )
-
         // wordViewModel.insert(notificationModelh)
         notificationList.add(notificationModelh)
         //  setAlarm(notificationModelh)
 
 
-        var notificationModeli =
+        val notificationModeli =
             Notification(
                 0,
-
                 6,
-                "14:0",
-
-                false,
-                false,
-                false,
-                Constants.Water,
-                true,
-                true,
-                true,
-                true,
-                true,
-                true,
-                true
+                "14:00",
+                status = false,
+                vibration = false,
+                sound = false,
+                alarmType = Constants.Water,
+                monday = true,
+                tuesday = true,
+                wednesday = true,
+                thursday = true,
+                friday = true,
+                saturday = true,
+                sunday = true
             )
-
         // wordViewModel.insert(notificationModeli)
         //  setAlarm(notificationModeli)
         notificationList.add(notificationModeli)
 
-
-        var notificationModell =
+        val notificationModell =
             Notification(
                 0,
-
                 7,
-                "16:5",
-                false,
-                false,
-                false,
-                Constants.Water,
-                true,
-                true,
-                true,
-                true,
-                true,
-                true,
-                true
+                "16:50",
+                status = false,
+                vibration = false,
+                sound = false,
+                alarmType = Constants.Water,
+                monday = true,
+                tuesday = true,
+                wednesday = true,
+                thursday = true,
+                friday = true,
+                saturday = true,
+                sunday = true
             )
-
         // wordViewModel.insert(notificationModell)
         // setAlarm(notificationModell)
         notificationList.add(notificationModell)
 
-
         //   setAlarm(notificationModell)
-        var notificationModelm =
+        val notificationModelm =
             Notification(
                 0,
-
                 8,
-                "18:0",
-
-                false,
-                false,
-                false,
-                Constants.Water,
-                true,
-                true,
-                true,
-                true,
-                true,
-                true,
-                true
+                "18:00",
+                status = false,
+                vibration = false,
+                sound = false,
+                alarmType = Constants.Water,
+                monday = true,
+                tuesday = true,
+                wednesday = true,
+                thursday = true,
+                friday = true,
+                saturday = true,
+                sunday = true
             )
-
         // wordViewModel.insert(notificationModelm)
         // setAlarm(notificationModelm)
         notificationList.add(notificationModelm)
 
-
-        var notificationModelp =
+        val notificationModelp =
             Notification(
                 0,
                 9,
-                "20:5",
-
-                false,
-                false,
-                false,
-                Constants.Water,
-                true,
-                true,
-                true,
-                true,
-                true,
-                true,
-                true
+                "20:50",
+                status = false,
+                vibration = false,
+                sound = false,
+                alarmType = Constants.Water,
+                monday = true,
+                tuesday = true,
+                wednesday = true,
+                thursday = true,
+                friday = true,
+                saturday = true,
+                sunday = true
             )
-
         // wordViewModel.insert(notificationModelp)
         //   setAlarm(notificationModelp)
         notificationList.add(notificationModelp)
-
-
     }
 
-    //
     private fun goodNightSleep() {
-
-
-        var notificationModel =
+        val notificationModel =
             Notification(
                 0,
-
                 1,
-
                 "13:50",
-
-                false,
-                false,
-                false,
-                Constants.Sleep,
-                true,
-                true,
-                true,
-                true,
-                true,
-                true,
-                true
+                status = false,
+                vibration = false,
+                sound = false,
+                alarmType = Constants.Sleep,
+                monday = true,
+                tuesday = true,
+                wednesday = true,
+                thursday = true,
+                friday = true,
+                saturday = true,
+                sunday = true
             )
         notificationList.add(notificationModel)
-
-
     }
 
-
-    //
-//
     private fun freshAirFun() {
-
-
-        var notificationModel =
+        val notificationModel =
             Notification(
                 0,
                 0,
                 "17:15",
-                false,
-                true,
-                true,
-                Constants.Breath,
-                true,
-                true,
-                true,
-                true,
-                true,
-                true,
-                true
+                status = false,
+                vibration = true,
+                sound = true,
+                alarmType = Constants.Breath,
+                monday = true,
+                tuesday = true,
+                wednesday = true,
+                thursday = true,
+                friday = true,
+                saturday = true,
+                sunday = true
             )
 
         notificationList.add(notificationModel)
-
-
     }
 
 
@@ -787,21 +715,22 @@ class HomeScreenActivity : AppCompatActivity() {
 
 
     /* access modifiers changed from: private */
-    fun startAlarm(hour: Int, mins: Int, id: Int) {
+    fun startAlarm(hour: Int, minutes: Int, id: Int) {
         val manager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val calendar = Calendar.getInstance()
         calendar.set(Calendar.HOUR_OF_DAY, hour)
-        calendar.set(Calendar.MINUTE, mins)
+        calendar.set(Calendar.MINUTE, minutes)
 
-        var intent = Intent(this, AlarmNotificationReceiver::class.java)
-
+        val intent = Intent(this, AlarmNotificationReceiver::class.java)
 
         val sb = StringBuilder()
         sb.append(hour)
         sb.append(" : ")
-        sb.append(mins)
+        sb.append(minutes)
+
         intent.putExtra("date", sb.toString())
         intent.putExtra("notiId", id)
+
         val pendingIntent = PendingIntent.getBroadcast(
             this,
             id,
@@ -809,14 +738,18 @@ class HomeScreenActivity : AppCompatActivity() {
             0
         )
 
-        manager.setRepeating(
-            AlarmManager.RTC_WAKEUP,
-            calendar.timeInMillis,
-            86400000,
-            pendingIntent
-        )
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            manager.setExactAndAllowWhileIdle(
+                AlarmManager.RTC_WAKEUP,
+                calendar.timeInMillis,
+                pendingIntent
+            )
+        } else {
+            manager.setExact(
+                AlarmManager.RTC_WAKEUP,
+                calendar.timeInMillis,
+                pendingIntent
+            )
+        }
     }
-
-
 }
-

@@ -1,5 +1,6 @@
 package com.jeluchu.roomlivedata.alarms
 
+import android.app.AlarmManager
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
@@ -20,64 +21,55 @@ class AlarmNotificationReceiver : BroadcastReceiver() {
         val calendar = Calendar.getInstance()
         val day = calendar.get(Calendar.DAY_OF_WEEK)
 
-
-
         when (day) {
             Calendar.SATURDAY -> {
-
-                if (intent!!.getBooleanExtra("saturday", false)) {
-                    showNotificationonDay(intent, context)
-
+                if (intent.getBooleanExtra("saturday", false)) {
+                    showNotificationDay(intent, context)
                 }
             }
 
             Calendar.SUNDAY -> {
-                if (intent!!.getBooleanExtra("sunday", false)) {
+                if (intent.getBooleanExtra("sunday", false)) {
                     //  sendNotification2(context);
-                    showNotificationonDay(intent, context)
-
+                    showNotificationDay(intent, context)
                 }
             }
+
             Calendar.MONDAY -> {
-                if (intent!!.getBooleanExtra("monday", false)) {
-
-                    showNotificationonDay(intent, context)
+                if (intent.getBooleanExtra("monday", false)) {
+                    showNotificationDay(intent, context)
                 }
             }
+
             Calendar.TUESDAY -> {
-                if (intent!!.getBooleanExtra("tuesday", false)) {
-
-                    showNotificationonDay(intent, context)
+                if (intent.getBooleanExtra("tuesday", false)) {
+                    showNotificationDay(intent, context)
                 }
             }
+
             Calendar.WEDNESDAY -> {
-                if (intent!!.getBooleanExtra("wednesday", false)) {
-
-                    showNotificationonDay(intent, context)
+                if (intent.getBooleanExtra("wednesday", false)) {
+                    showNotificationDay(intent, context)
                 }
             }
+
             Calendar.THURSDAY -> {
-                if (intent!!.getBooleanExtra("thursday", false)) {
-
-                    showNotificationonDay(intent, context)
+                if (intent.getBooleanExtra("thursday", false)) {
+                    showNotificationDay(intent, context)
                 }
             }
+
             Calendar.FRIDAY -> {
-                if (intent!!.getBooleanExtra("friday", false)) {
-
-                    showNotificationonDay(intent, context)
+                if (intent.getBooleanExtra("friday", false)) {
+                    showNotificationDay(intent, context)
                 }
             }
-
-
-
         }
-        showNotificationonDay(intent, context)
 
-
+        showNotificationDay(intent, context)
     }
 
-    private fun showNotificationonDay(intent: Intent, context: Context) {
+    private fun showNotificationDay(intent: Intent, context: Context) {
         val myIntent = Intent(context, MainActivity::class.java)
         val pendingIntent = PendingIntent.getActivity(
             context,
@@ -85,7 +77,6 @@ class AlarmNotificationReceiver : BroadcastReceiver() {
             myIntent,
             FLAG_ONE_SHOT
         )
-
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             // Create the NotificationChannel
@@ -95,11 +86,11 @@ class AlarmNotificationReceiver : BroadcastReceiver() {
             val mChannel = NotificationChannel("AlarmId", name, importance)
             mChannel.description = descriptionText
             val notificationManager =
-                context?.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+                context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             notificationManager.createNotificationChannel(mChannel)
         }
 
-        var mBuilder = NotificationCompat.Builder(context!!, "AlarmId")
+        val mBuilder = NotificationCompat.Builder(context, "AlarmId")
             .setSmallIcon(R.mipmap.ic_launcher)
             .setContentTitle("Alarm")
             .setContentText(intent.getStringExtra("date"))
@@ -107,11 +98,10 @@ class AlarmNotificationReceiver : BroadcastReceiver() {
             .setContentIntent(pendingIntent)
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
 
-        if (intent!!.getBooleanExtra("vibration", false))
+        if (intent.getBooleanExtra("vibration", false))
             mBuilder.setVibrate(longArrayOf(1000, 1000, 1000, 1000, 1000))
-        if (intent!!.getBooleanExtra("sound", false))
+        if (intent.getBooleanExtra("sound", false))
             mBuilder.setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
-
 
         val notificationManager =
             context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
@@ -119,7 +109,26 @@ class AlarmNotificationReceiver : BroadcastReceiver() {
             intent.getIntExtra("notiId", 0), mBuilder.build()
         )
 
+        val manager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        val nextPendingIntent = PendingIntent.getBroadcast(
+            context,
+            intent.getIntExtra("notiId", 0),
+            intent,
+            0
+        )
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            manager.setExactAndAllowWhileIdle(
+                AlarmManager.RTC_WAKEUP,
+                86400000,
+                pendingIntent
+            )
+        } else {
+            manager.setExact(
+                AlarmManager.RTC_WAKEUP,
+                86400000,
+                pendingIntent
+            )
+        }
     }
-
-
 }
