@@ -35,27 +35,22 @@ class HomeScreenActivity : AppCompatActivity() {
 
     var notificationList = ArrayList<Notification>()
     var manager: AlarmManager? = null
-    private val sdf = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.getDefault())
+    private val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
     var sharedPreferenceHelper: SharedPreferenceHelper? = null
 
     private lateinit var wordViewModel: WordViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
         sharedPreferenceHelper = SharedPreferenceHelper.instance
-
 
         if (sharedPreferenceHelper!!.getBoolean(Constants.Theme)) {
             setTheme(R.style.darkTheme)
-
         } else {
             setTheme(R.style.AppTheme)
         }
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_screen)
-
-
 
         wordViewModel = ViewModelProvider.AndroidViewModelFactory.getInstance(application)
             .create(WordViewModel::class.java)
@@ -71,8 +66,8 @@ class HomeScreenActivity : AppCompatActivity() {
 //
 //            //  Log.e("HomeScreenActivity", "setAlarm: " + notificationList[words.size ])
 //        })
-
-
+//
+//
 //            for (i in 0..words.size - 1) {
 //                if (words[i].alarmType.equals(alarmType)) {
 //                    notificationList.add(words[i])
@@ -80,7 +75,6 @@ class HomeScreenActivity : AppCompatActivity() {
 //            }
 //            // setAlarm(notificationList)
 //            adapter.setWords(notificationList)
-
 
         if (!sharedPreferenceHelper!!.getBoolean(Constants.defualtAlarmFirstTime)) {
             manager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
@@ -94,10 +88,15 @@ class HomeScreenActivity : AppCompatActivity() {
             blief()
             tech()
             control()
+
+            for (i in 0 until notificationList.size) {
+                wordViewModel.insert(notificationList[i])
+                setAlarm(notificationList[i])
+                Log.e("HomeScreenActivity", "setAlarm: " + notificationList[i])
+            }
+
             sharedPreferenceHelper!!.setBoolean(Constants.defualtAlarmFirstTime, true)
         }
-
-
 
         getSupportActionBar()!!.hide()
         mHandler = Handler()
@@ -119,18 +118,18 @@ class HomeScreenActivity : AppCompatActivity() {
             startActivity(intent)
 
         }
+
         id_notification.setOnClickListener {
             val intent = Intent(this, RemindersActivity::class.java)
             startActivity(intent)
 
         }
+
         id_stopwatch.setOnClickListener {
             val intent = Intent(this, ChewDataActivity::class.java)
             startActivity(intent)
 
         }
-
-
     }
 
 //    private fun setAlarm(notificationList: List<Notification>) {
@@ -210,18 +209,14 @@ class HomeScreenActivity : AppCompatActivity() {
 
     private val mOnNavigationItemSelectedListener =
         object : BottomNavigationView.OnNavigationItemSelectedListener {
-
             override fun onNavigationItemSelected(item: MenuItem): Boolean {
-
                 when (item.getItemId()) {
                     R.id.action_item1 -> {
                         startActivityNineFactor()
-
                         return true
                     }
                     R.id.action_item2 -> {
                         startActivityChew()
-
                         return true
                     }
                     R.id.action_item3 -> {
@@ -288,10 +283,9 @@ class HomeScreenActivity : AppCompatActivity() {
             sunday = true
         )
 
-
         // wordViewModel.insert(notificationModela)
-        notificationList.add(notificationModela)
         // setAlarm(notificationModela)
+        notificationList.add(notificationModela)
 
         val notificationModelb =
             Notification(
@@ -311,13 +305,6 @@ class HomeScreenActivity : AppCompatActivity() {
                 sunday = true
             )
         notificationList.add(notificationModelb)
-
-
-        for (i in 0 until notificationList.size) {
-            wordViewModel.insert(notificationList[i])
-            setAlarm(notificationList[i])
-            Log.e("HomeScreenActivity", "setAlarm: " + notificationList[i])
-        }
     }
 
     private fun tech() {
@@ -414,6 +401,7 @@ class HomeScreenActivity : AppCompatActivity() {
         // wordViewModel.insert(notificationModela)
         //  setAlarm(notificationModela)
         notificationList.add(notificationModela)
+
         val notificationModelb =
             Notification(
                 0,
@@ -433,7 +421,7 @@ class HomeScreenActivity : AppCompatActivity() {
             )
 
         // wordViewModel.insert(notificationModelb)
-//        setAlarm(notificationModelb)
+        // setAlarm(notificationModelb)
         notificationList.add(notificationModelb)
 
         val notificationModelc =
@@ -480,7 +468,7 @@ class HomeScreenActivity : AppCompatActivity() {
             )
 
         // wordViewModel.insert(notificationModela)
-        //     setAlarm(notificationModela)
+        // setAlarm(notificationModela)
         notificationList.add(notificationModela)
     }
 
@@ -526,7 +514,7 @@ class HomeScreenActivity : AppCompatActivity() {
             )
 
         // wordViewModel.insert(notificationModelc)
-        //setAlarm(notificationModelc)
+        // setAlarm(notificationModelc)
         notificationList.add(notificationModelc)
 
         val notificationModeld =
@@ -548,7 +536,7 @@ class HomeScreenActivity : AppCompatActivity() {
             )
 
         // wordViewModel.insert(notificationModeld)
-        //   setAlarm(notificationModeld)
+        // setAlarm(notificationModeld)
         notificationList.add(notificationModeld)
 
         val notificationModelh =
@@ -569,9 +557,8 @@ class HomeScreenActivity : AppCompatActivity() {
                 sunday = true
             )
         // wordViewModel.insert(notificationModelh)
+        // setAlarm(notificationModelh)
         notificationList.add(notificationModelh)
-        //  setAlarm(notificationModelh)
-
 
         val notificationModeli =
             Notification(
